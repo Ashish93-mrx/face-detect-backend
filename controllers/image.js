@@ -10,7 +10,7 @@ const ImageURL = (req,res) => {
       //////////////////////////////////////////////////////////////////////////////////////////////////
   
       // Your PAT (Personal Access Token) can be found in the portal under Authentification
-      const PAT = '4ecfe0574feb44ffa3ba8488f0b76d3e';
+      const PAT = '6dc7e46bc9124c5c8824be4822abe105';
       // Specify the correct user_id/app_id pairings
       // Since you're making inferences outside your app's scope
       const USER_ID = 'oc0g0d3kapls';       
