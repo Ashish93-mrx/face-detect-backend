@@ -4,18 +4,7 @@ const handleRegister = (req,res,db,bcrypt) =>{
     if(!email || !name || !password){
         return res.status(400).json('please enter all details');
     }
-    // bcrypt.hash(password, null, null, function(err, hash) {
-        // Store hash in your password DB.
-    //     console.log(hash);
-    // });
-    // database.user.push({
-    //     id: "124",
-    //     name: name,
-    //     email: email,
-    //     //password: password,
-    //     entries: 0,
-    //     joined: new Date()
-    // })
+
     const hash = bcrypt.hashSync(password);
     db.transaction(trx => {
         trx.insert({
