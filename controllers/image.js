@@ -52,15 +52,8 @@ const ImageURL = (req,res) => {
 
   console.log(req.body.input);
     fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", returnClarifaiRequestOptions(req.body.input))
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Clarifai API request failed');
-        }
-        return response.json(); // Parse the JSON response
-    })
-    .then(data => {
-            
-            res.json(data);
+    .then( response=> {
+            res.json(response.data);
     })
     .catch(err =>  res.status(400).json('API problem'));
 }
