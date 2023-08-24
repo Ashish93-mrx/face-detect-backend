@@ -1,3 +1,5 @@
+const Clarifai = require('clarifai');
+const fetch = require('node-fetch');
 
 
 const ImageURL = (req,res) => {
@@ -71,7 +73,12 @@ const ImageHandle = (req,res,db) => {
     }
 
 
+// module.exports = {
+//     ImageHandle: ImageHandle,
+//     ImageURL: ImageURL
+// }
+
 module.exports = {
-    ImageHandle: ImageHandle,
-    ImageURL: ImageURL
-}
+    ImageHandle,
+    ImageURL
+};
