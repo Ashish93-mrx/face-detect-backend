@@ -1,8 +1,7 @@
-const Clarifai = require('clarifai');
-//const fetch = require('node-fetch');
+import fetch from 'node-fetch';
+import Clarifai from 'clarifai';
 
-
-const ImageURL = (req,res) => {
+export const ImageURL = (req,res) => {
 
     //const input = req.body.input;
     const returnClarifaiRequestOptions = (temp) => {
@@ -54,14 +53,15 @@ const ImageURL = (req,res) => {
 
   console.log(req.body.input);
     fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", returnClarifaiRequestOptions(req.body.input))
-    .then( response=> {
-            res.json(response.data);
+    .then(response => response.json()) 
+    .then(data => {
+        res.json(data);
     })
     .catch(err =>  res.status(400).json('API problem'));
 }
 
 
-const ImageHandle = (req,res,db) => {
+export const ImageHandle = (req,res,db) => {
     const { id } = req.body;
     db('users').where('id','=',id)
         .increment('entries', 1)
@@ -78,7 +78,7 @@ const ImageHandle = (req,res,db) => {
 //     ImageURL: ImageURL
 // }
 
-module.exports = {
-    ImageHandle,
-    ImageURL
-};
+// module.exports = {
+//     ImageHandle,
+//     ImageURL
+// };

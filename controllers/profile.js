@@ -1,4 +1,4 @@
-const ProfileHandle = (req, res,db) => {
+export const ProfileHandle = (req, res,db) => {
     const { id } = req.params;
     //let found = false;
     // database.user.forEach(i => {
@@ -22,6 +22,6 @@ const ProfileHandle = (req, res,db) => {
     .catch(err => res.status(404).json('error getting user'))
 }
 
-module.exports = {
-    ProfileHandle
-}
+// module.exports = {
+//     ProfileHandle
+// }

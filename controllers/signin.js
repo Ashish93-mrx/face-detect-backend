@@ -1,4 +1,4 @@
-const SignInhandle = (req,res,db,bcrypt) => {
+export const SignInhandle = (req,res,db,bcrypt) => {
 const {email, password} = req.body;
 
     if(!email || !password){
@@ -40,6 +40,6 @@ const {email, password} = req.body;
     
     }
 
-module.exports = {
-    SignInhandle: SignInhandle
-}
+// module.exports = {
+//     SignInhandle: SignInhandle
+// }

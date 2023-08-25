@@ -1,24 +1,36 @@
-const express = require('express');
-const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
-const knex = require('knex');
-const register = require('./controllers/register');
-const signin = require('./controllers/signin');
-const profile = require('./controllers/profile');
-const image = require('./controllers/image');
-const clarifai = require('clarifai');
+import express, { json } from 'express';
+import bcrypt from 'bcrypt-nodejs';
+import cors from 'cors';
+import knex from 'knex';
+import { handleRegister } from './controllers/register.js';
+import { SignInhandle } from './controllers/signin.js';
+import { ProfileHandle } from './controllers/profile.js';
+import { ImageHandle, ImageURL } from './controllers/image.mjs';
+import clarifai from 'clarifai';
 
 
-const db = knex({
+// const db = knex({
+//     client: 'pg',
+//     connection: {
+//       connectionString : process.env.DATABASE_URL,
+//       ssl: { rejectUnauthorized: false },
+//       host: process.env.DATABASE_HOST,
+//       port : 5432,
+//       user : process.env.DATABASE_USER,
+//       password : process.env.DATABASE_PW,
+//       database : process.env.DATABASE_DB
+//     }
+
+//   });
+
+
+  const db = knex({
     client: 'pg',
     connection: {
-      connectionString : process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false },
-      host: process.env.DATABASE_HOST,
-      port : 5432,
-      user : process.env.DATABASE_USER,
-      password : process.env.DATABASE_PW,
-      database : process.env.DATABASE_DB
+      host: '127.0.0.1',
+      user : 'postgres',
+      password : 'posttest',
+      database : 'postgres'
     }
 
   });
@@ -28,7 +40,7 @@ db.select('*').from('users').then(data => {
 });
 
 const app = express();
-app.use(express.json());
+app.use(json());
 app.use(cors())
 
 app.get('/',(req,res) => {
@@ -36,16 +48,16 @@ app.get('/',(req,res) => {
 })
 
 
-app.post('/signin',(req,res) => {signin.SignInhandle(req,res,db,bcrypt)})
+app.post('/signin',(req,res) => {SignInhandle(req,res,db,bcrypt)})
 
 
-app.post("/register", (req,res) => { register.handleRegister(req,res,db,bcrypt)})
+app.post("/register", (req,res) => { handleRegister(req,res,db,bcrypt)})
 
-app.get('/profile/:id',(req,res) => { profile.ProfileHandle(req,res,db)})
+app.get('/profile/:id',(req,res) => { ProfileHandle(req,res,db)})
 
-app.put('/image',(req,res) => { image.ImageHandle(req,res,db)})
+app.put('/image',(req,res) => { ImageHandle(req,res,db)})
 
-app.post('/imageurl',(req,res) => { image.ImageURL(req,res)})
+app.post('/imageurl',(req,res) => { ImageURL(req,res)})
     // let found = false;
     // database.user.forEach(i => {
     //     if(i.id===id) {
