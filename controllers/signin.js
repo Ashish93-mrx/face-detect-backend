@@ -36,7 +36,7 @@ const {email, password} = req.body;
             res.status(400).json('wrong credentials')
             }
         })
-        .catch(err =>res.status(400).json(' wrong credentials'))
+        .catch(err =>err.status(400).json(' wrong credentials'))
     
     }
 
