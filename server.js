@@ -23,17 +23,31 @@ const db = knex({
 
   });
 
+// Custom middleware to check input length
+const validateInputLength = (maxAllowedLength) => (req, res, next) => {
+    // Check the length of the request body or query parameters, depending on your usage
+    const requestData = req.body || req.query;
+  
+    for (const key in requestData) {
+      if (requestData[key].length > maxAllowedLength) {
+        return res.status(400).json({ error: `Input data for '${key}' exceeds the allowed length.` });
+      }
+    }
+  
+    next(); // Proceed to the next middleware
+  };
+  
 
-  // const db = knex({
-  //   client: 'pg',
-  //   connection: {
-  //     host: '127.0.0.1',
-  //     user : 'postgres',
-  //     password : 'posttest',
-  //     database : 'postgres'
-  //   }
+//   const db = knex({
+//     client: 'pg',
+//     connection: {
+//       host: '127.0.0.1',
+//       user : 'postgres',
+//       password : 'posttest',
+//       database : 'postgres'
+//     }
 
-  // });
+//   });
     
 db.select('*').from('users').then(data => {
     console.log(data);
@@ -48,16 +62,16 @@ app.get('/',(req,res) => {
 })
 
 
-app.post('/signin',(req,res) => {SignInhandle(req,res,db,bcrypt)})
+app.post('/signin', validateInputLength(20),(req,res) => {SignInhandle(req,res,db,bcrypt)})
 
 
-app.post("/register", (req,res) => { handleRegister(req,res,db,bcrypt)})
+app.post("/register", validateInputLength(20),(req,res) => { handleRegister(req,res,db,bcrypt)})
 
 app.get('/profile/:id',(req,res) => { ProfileHandle(req,res,db)})
 
 app.put('/image',(req,res) => { ImageHandle(req,res,db)})
 
-app.post('/imageurl',(req,res) => { ImageURL(req,res)})
+app.post('/imageurl', validateInputLength(20),(req,res) => { ImageURL(req,res)})
     // let found = false;
     // database.user.forEach(i => {
     //     if(i.id===id) {
