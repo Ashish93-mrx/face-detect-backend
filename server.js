@@ -9,19 +9,19 @@ import { ImageHandle, ImageURL } from './controllers/image.mjs';
 import clarifai from 'clarifai';
 
 
-const db = knex({
-    client: 'pg',
-    connection: {
-      connectionString : process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false },
-      host: process.env.DATABASE_HOST,
-      port : 5432,
-      user : process.env.DATABASE_USER,
-      password : process.env.DATABASE_PW,
-      database : process.env.DATABASE_DB
-    }
+// const db = knex({
+//     client: 'pg',
+//     connection: {
+//       connectionString : process.env.DATABASE_URL,
+//       ssl: { rejectUnauthorized: false },
+//       host: process.env.DATABASE_HOST,
+//       port : 5432,
+//       user : process.env.DATABASE_USER,
+//       password : process.env.DATABASE_PW,
+//       database : process.env.DATABASE_DB
+//     }
 
-  });
+//   });
 
 // Custom middleware to check input length
 const validateInputLength = (maxAllowedLength) => (req, res, next) => {
@@ -38,14 +38,14 @@ const validateInputLength = (maxAllowedLength) => (req, res, next) => {
   };
   
 
-//   const db = knex({
-//     client: 'pg',
-//     connection: {
-//       host: '127.0.0.1',
-//       user : 'postgres',
-//       password : 'posttest',
-//       database : 'postgres'
-//     }
+  const db = knex({
+    client: 'pg',
+    connection: {
+      host: '127.0.0.1',
+      user : 'postgres',
+      password : 'posttest',
+      database : 'postgres'
+    }
 
 //   });
     
