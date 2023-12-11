@@ -47,7 +47,7 @@ const validateInputLength = (maxAllowedLength) => (req, res, next) => {
       database : 'postgres'
     }
 
-//   });
+  });
     
 db.select('*').from('users').then(data => {
     console.log(data);
