@@ -41,10 +41,10 @@ const validateInputLength = (maxAllowedLength) => (req, res, next) => {
   const db = knex({
     client: 'pg',
     connection: {
-      host: 'dpg-clrafsae9h4c73atnd20-a.oregon-postgres.render.com',
-      user : 'facedetectbackendx22_user',
-      password : 'Ay3N8TbWMD80rhnorOmo0cs0l72tsZl1',
-      database : 'facedetectbackendx22'
+      host: '127.0.0.1',
+      user : 'postgres',
+      password : 'postgres',
+      database : 'postgres'
     }
 
   });
