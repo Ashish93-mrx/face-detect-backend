@@ -42,8 +42,8 @@ const validateInputLength = (maxAllowedLength) => (req, res, next) => {
     client: 'pg',
     connection: {
       host: '127.0.0.1',
-      user : 'postgres',
-      password : 'postgres',
+      user : 'facedetectbackendx22_user',
+      password : 'Ay3N8TbWMD80rhnorOmo0cs0l72tsZl1',
       database : 'facedetectx22'
     }
 
