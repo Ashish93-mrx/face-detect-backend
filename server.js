@@ -9,19 +9,19 @@ import { ImageHandle, ImageURL } from './controllers/image.mjs';
 import clarifai from 'clarifai';
 
 
-// const db = knex({
-//     client: 'pg',
-//     connection: {
-//       connectionString : process.env.DATABASE_URL,
-//       ssl: { rejectUnauthorized: false },
-//       host: process.env.DATABASE_HOST,
-//       port : 5432,
-//       user : process.env.DATABASE_USER,
-//       password : process.env.DATABASE_PW,
-//       database : process.env.DATABASE_DB
-//     }
+const db = knex({
+    client: 'pg',
+    connection: {
+      connectionString : process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+      host: process.env.DATABASE_HOST,
+      port : 5432,
+      user : process.env.DATABASE_USER,
+      password : process.env.DATABASE_PW,
+      database : process.env.DATABASE_DB
+    }
 
-//   });
+  });
 
 // Custom middleware to check input length
 const validateInputLength = (maxAllowedLength) => (req, res, next) => {
@@ -38,17 +38,17 @@ const validateInputLength = (maxAllowedLength) => (req, res, next) => {
   };
   
 
-  const db = knex({
-    client: 'pg',
-    connection: {
-      host: 'dpg-clrafsae9h4c73atnd20-a',
-      port : 5432,
-      user : 'facedetectbackendx22_user',
-      password : 'Ay3N8TbWMD80rhnorOmo0cs0l72tsZl1',
-      database : 'facedetectbackendx22'
-    }
+  // const db = knex({
+  //   client: 'pg',
+  //   connection: {
+  //     host: 'dpg-clrafsae9h4c73atnd20-a',
+  //     port : 5432,
+  //     user : 'facedetectbackendx22_user',
+  //     password : 'Ay3N8TbWMD80rhnorOmo0cs0l72tsZl1',
+  //     database : 'facedetectbackendx22'
+  //   }
 
-  });
+  // });
     
 db.select('*').from('users').then(data => {
     console.log(data);
