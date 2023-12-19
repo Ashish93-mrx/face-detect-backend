@@ -43,9 +43,9 @@ const validateInputLength = (maxAllowedLength) => (req, res, next) => {
     connection: {
       host: '127.0.0.1',
       port : 5432,
-      user : 'postgres',
-      password : 'postgres',
-      database : 'postgres'
+      user : 'facedetectbackendx22_user',
+      password : 'Ay3N8TbWMD80rhnorOmo0cs0l72tsZl1',
+      database : 'facedetectbackendx22'
     }
 
   });
