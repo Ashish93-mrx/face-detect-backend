@@ -72,7 +72,7 @@ app.get('/profile/:id',(req,res) => { ProfileHandle(req,res,db)})
 
 app.put('/image',(req,res) => { ImageHandle(req,res,db)})
 
-app.post('/imageurl', validateInputLength(50),(req,res) => { ImageURL(req,res)})
+app.post('/imageurl',(req,res) => { ImageURL(req,res)})
     // let found = false;
     // database.user.forEach(i => {
     //     if(i.id===id) {
